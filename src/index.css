@@ -1,0 +1,570 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.page-link {
+  background-color: #f9f9f9 !important;
+  color: #272727 !important;
+  border-radius: 10px !important;
+  border: solid 1px 272727 !important;
+}
+.page-link:hover {
+  background-color: #272727 !important;
+  color: white !important;
+  border: solid 1px 272727 !important;
+}
+
+.search-count-text {
+  color: #979797;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: left;
+}
+.card-filter {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 170px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-filter-item {
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px;
+}
+.card-filter-item:hover {
+  background-color: #272727;
+  color: #ffffff;
+}
+.sub-tile {
+  color: #272727;
+   font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 28px;
+}
+.filter-title {
+  color: #555550;
+   font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: left;
+}
+
+.filter-sub {
+  color: #555550;
+   font-size: 16px;
+  letter-spacing: 0;
+  line-height: 17px;
+  text-align: left;
+  margin-left: 8px;
+}
+
+
+.cat-text {
+  color: #979797;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 23px;
+  text-align: left;
+}
+
+.cat-title {
+  color: #555550;
+  /* font-family: Almarai; */
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+}
+
+.cat-rate {
+  color: #ffc107;
+  /* font-family: "Almarai"; */
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: left;
+}
+
+.barnd-text {
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: left;
+
+}
+
+.color {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.product-description {
+  color: #555550;
+  font-family: Cairo;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-align: left;
+}
+.product-price {
+  height: 46px;
+  width: 150px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 9px;
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+ 
+/* products gallary slide style */
+.image-gallery-slide {
+  width: 372px;
+  height: 470px;
+  border-radius: 29px;
+}
+
+.rate-container {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 12px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
+}
+.rate-count {
+  color: #979797;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 23px;
+}
+.rate-name {
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 19px;
+}
+.rate-description {
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: left;
+}
+
+.input-form-area {
+  width: 100%;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.product-cart-add {
+  cursor: pointer;
+  text-align: center;
+  height: 55px;
+  border-radius: 9px;
+  border: none;
+  background-color: #272727;
+  color: #ffffff;
+  /* font-family: "Almarai"; */
+  font-size: 14px;
+  font-weight: normal;
+}
+.product-cart-add:hover {
+  color: #bdbaba !important;
+} 
+
+.cat-text {
+  color: #979797;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 23px;
+  text-align: left;
+}
+ 
+.cat-title {
+  color: #555550;
+  /* font-family: Almarai; */
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+}
+
+.cat-rate {
+  color: #ffc107;
+  /* font-family: "Almarai"; */
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: left;
+}
+
+.barnd-text {
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: left;
+
+}
+
+.color {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.product-description {
+  color: #555550;
+  /* font-family: Cairo;` */
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-align: left;
+}
+.product-price {
+  height: 46px;
+  width: 150px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 9px;
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+ 
+.product-cart-add:hover {
+  color: #bdbaba !important;
+}
+.cart-checkout {
+  height: 200px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+ 
+
+.product-price {
+  height: 46px;
+  width: 150px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 9px;
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+.copon-input {
+  box-sizing: border-box;
+  height: 46px;
+  width: 90%;
+  border: 1px solid #979797;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: normal;
+}
+.copon-btn {
+  cursor: pointer;
+  border: none;
+  height: 46px;
+  padding-top: 5px;
+  border-radius: 5px !important;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px !important;
+  border-radius: 0 !important;
+  background-color: #272727;
+  color: #ffff !important;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: normal;
+}
+ 
+.user-address-card {
+  height: 151px;
+  width: 100%;
+  border-radius: 7px;
+
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
+}
+
+ 
+
+.product-gallary-card {
+  height: 470px !important;
+  width: 370px;
+  border-radius: 29px;
+  background-color: #ffffff;
+}
+
+.cat-text {
+  color: #979797;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 23px;
+  text-align: left;
+}
+
+.cat-title {
+  color: #555550;
+  /* font-family: Almarai; */
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+}
+
+.cat-rate {
+  color: #ffc107;
+  /* font-family: "Almarai"; */
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: left;
+}
+
+.barnd-text {
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.color {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.product-description {
+  color: #555550;
+  font-family: Cairo;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-align: left;
+}
+.product-price {
+  height: 46px;
+  width: 150px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 9px;
+  color: #555550;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+/* admin style  */
+.sidebar {
+  height: 660px;
+  width: 100%;
+  border-radius: 21px;
+  background-color: #ffffff;
+}
+
+.admin-side-text {
+  color: #272727;
+  /* font-family: "Almarai"; */
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: left;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-side-text:hover {
+  background-color: #272727;
+  color: white;
+  font-size: 14px;
+}
+.admin-content-text {
+  color: #555550;
+  /* font-family: Almarai; */
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: left;
+}
+.item-delete-edit {
+  color: #979797;
+  /* font-family: "Almarai"; */
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 30px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.text-form {
+  color: #979797;
+  /* font-family: "Almarai"; */
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: left;
+}
+.input-form {
+  height: 37px;
+  width: 100%;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.input-form-area {
+  width: 100%;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.select {
+  box-sizing: border-box;
+  height: 40px;
+  color: #979797;
+  width: 100%;
+  border: 1px solid #979797;
+  border-radius: 8px;
+}
+.btn-save {
+  border: none;
+  color: white;
+  height: 56px;
+  width: 150px;
+  border-radius: 9px;
+  background-color: #272727;
+}
+.btn-save:hover {
+  color: rgb(164, 164, 164);
+}
+.btn-a {
+  border: none;
+  color: white;
+  height: 45px;
+  border-radius: 9px;
+  background-color: #272727;
+}
+.btn-a:hover {
+  color: rgb(164, 164, 164);
+}
+/* end admin  */
+
+
+.user-order {
+  height: 100%;
+  width: 100%;
+  border-radius: 7px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
+}
+.order-title {
+  color: #272727;
+  /* font-family: "Almarai"; */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.stat {
+  color: #979797;
+  /* font-family: Cairo; */
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 30px;
+  text-align: left;
+}
+
+.user-address-card {
+  height: 151px;
+  width: 100%;
+  border-radius: 7px;
+
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
+}
+.btn-add-address {
+  border: none;
+  height: 50px;
+  width: 100%;
+  color: white;
+  border-radius: 9px;
+  background-color: #272727;
+}
+
+/* user address */
+
+/* user card data */
+.user-data {
+  height: 270px;
+  width: 100% i !important;
+  border-radius: 7px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
+}
+/* end user data */
+
+ .user-address-card {
+  height: 151px;
+  width: 100%;
+  border-radius: 7px;
+
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
+}
