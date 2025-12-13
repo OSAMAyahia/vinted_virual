@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { createBrand, getAllBrand } from '../../Redux/Actions/BrandAction';
+import { createBrand, getallBrand } from '../../Redux/Actions/BrandAction';
 import { ToastContainer,toast } from 'react-toastify';
 const avatar= "https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/avatar.png"
 const AdminAddBrand = () => { 
@@ -55,7 +55,7 @@ const AdminAddBrand = () => {
 
     // Fetch brands on component mount
     useEffect(() => {
-        dispatch(getAllBrand())
+        dispatch(getallBrand())
     }, [dispatch])
 
     const brands = useSelector(state => state.allBrand.brand?.data || [])

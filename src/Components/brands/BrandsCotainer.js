@@ -6,7 +6,7 @@ const BrandContainer = () => {
   const dispatch= useDispatch()
   useEffect(()=>{ dispatch(getallBrand())},[])
   const data=useSelector(state=>state.allBrand)
-  const brand = data?.brand?.data?.data ??  []
+  const brand = data?.brand?.data ??  []
   console.log("the bb is ",brand)
   return (
     <div 
@@ -17,9 +17,10 @@ const BrandContainer = () => {
             <div key={item._id} className="col-md-4 my-3 col-sm-6 col-lg-2 col-6  ">
               <div className="card" style={{ maxWidth: "12rem" }}>
                 <img
-                  src={`http://localhost:8000/users/${item.image}`}
-                   alt={item.name || "Brand Image"}
-                  style={{ width: "100%", height: "140px" }}
+                  src={item.image || 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/avatar.png'}
+                  onError={(e) => { e.currentTarget.src = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/avatar.png' }}
+                  alt={item.name || "Brand Image"}
+                  style={{ width: "100%", height: "140px", objectFit: "contain" }}
                 />
               </div>
             </div>

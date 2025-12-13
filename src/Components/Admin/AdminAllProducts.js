@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AdminProductCard from './AdminProductCard'
-import { getAllProducts } from '../../Redux/Actions/ProductAction'
+import { getallproduct } from '../../Redux/Actions/ProductAction'
 
 const AdminAllProductss = () => {
   const dispatch = useDispatch()
   const products = useSelector(state => state.allproduct.allProducts?.data?.Data || [])
 
   useEffect(() => {
-    dispatch(getAllProducts())
+    dispatch(getallproduct())
   }, [dispatch])
 
   return (

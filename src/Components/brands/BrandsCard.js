@@ -6,7 +6,7 @@ const BrandsCard = () => {
  const dispatch= useDispatch()
  useEffect(()=>{ dispatch(getallBrand())},[])
  const data=useSelector(state=>state.allBrand)
-  const brands = data?.brand?.data?.data ?? [];
+  const brands = data?.brand?.data ?? [];
 
  console.log('Brands data:', brands);
   return (
@@ -17,11 +17,11 @@ const BrandsCard = () => {
                     <div key={index} className="col-md-4 col-sm-6 col-lg-2 col-6 g-2 my-2">
                         <div className="card" style={{ maxWidth: "12rem" }}>
                             <img 
-                                src={item.image} 
+                                src={item.image || 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/avatar.png'} 
+                                onError={(e) => { e.currentTarget.src = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/avatar.png' }}
                                 className="card-img-top" 
                                 alt={item.name || "Brand Image"}  
-                                style={{ width: "100%", height: "180px" , objectFit: "cover", // أو يمكنك استخدام "contain" إذا كنت تريد أن تكون الصورة داخل الإطار دون قص
-                                    objectPosition: "center"  }} 
+                                style={{ width: "100%", height: "180px" , objectFit: "contain", objectPosition: "center"  }} 
                             />
                             <div className="card-body">
                                 <h5 className="card-title">{item.name}</h5>

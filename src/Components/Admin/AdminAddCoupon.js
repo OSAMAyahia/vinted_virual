@@ -3,7 +3,7 @@ import { useDispatch ,useSelector} from 'react-redux';
  import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddCoupon from './../../Hooks/Coupon/AddCoupon';
-import { getAllCoupons } from './../../Redux/Actions/CouponAcion';
+import { GetCouponAction } from './../../Redux/Actions/CouponAcion';
 
  
 
@@ -61,10 +61,10 @@ import { getAllCoupons } from './../../Redux/Actions/CouponAcion';
          }
      };
 
-     // Fetch coupons on component mount
-     useEffect(() => {
-         dispatch(getAllCoupons())
-     }, [dispatch])
+      // Fetch coupons on component mount
+      useEffect(() => {
+          dispatch(GetCouponAction())
+      }, [dispatch])
      
       return (
         <div>
