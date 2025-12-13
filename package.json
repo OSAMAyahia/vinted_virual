@@ -27,7 +27,11 @@
     "unop-react-dropdown": "^0.2.3",
     "web-vitals": "^4.2.3"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0"
+  },
   "scripts": {
+    "postinstall": "npx update-browserslist-db@latest",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
