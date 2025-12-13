@@ -47,7 +47,7 @@ const CartItem = ({ item }) => {
         style={{ marginRight: "15px", objectFit: "contain" }} // لضبط المسافة بين الصورة والعناصر الأخرى
         width="140px"
         height="140px"
-        src={`http://localhost:8000/users/${imageCover}`}
+        src={imageCover}
         alt="product"
       />
       <div className="w-100">

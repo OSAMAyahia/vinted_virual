@@ -17,9 +17,9 @@ const BrandsCard = () => {
                     <div key={index} className="col-md-4 col-sm-6 col-lg-2 col-6 g-2 my-2">
                         <div className="card" style={{ maxWidth: "12rem" }}>
                             <img 
-                                src={`http://localhost:8000/users/${item.image}`}  // قم بتغيير رابط الصورة بناءً على الـ API الخاص بك
+                                src={item.image} 
                                 className="card-img-top" 
-                                alt={item.name || "Brand Image"}  // alt يعطي وصف للصورة
+                                alt={item.name || "Brand Image"}  
                                 style={{ width: "100%", height: "180px" , objectFit: "cover", // أو يمكنك استخدام "contain" إذا كنت تريد أن تكون الصورة داخل الإطار دون قص
                                     objectPosition: "center"  }} 
                             />

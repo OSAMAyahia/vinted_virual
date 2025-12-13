@@ -10,7 +10,7 @@ const CategoryContainer = ({load,data}) => {
           <div key={category._id} className="col-md-4 col-sm-6 col-lg-2 col-6 my-2"> 
             <div className="">
               <img 
-                src={`http://localhost:8000/users/${category.image}`} 
+                src={category.image} 
                 style={{ borderRadius: "150px", height: "130px", width: "150px", background: colors[Math.floor(Math.random() * colors.length)] }} 
                 className="card-img-top" 
                 alt={category.name}

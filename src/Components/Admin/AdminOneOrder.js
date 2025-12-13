@@ -3,7 +3,18 @@ import { Link } from "react-router-dom"
 const  mobile ='https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png'
 const deleteicon ='https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/delete.png'
 
-const AdminOneOrder = () => {
+const AdminOneOrder = ({ order }) => {
+  if (!order) return null
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'pending': return '#ffc107'
+      case 'processing': return '#17a2b8'
+      case 'delivered': return '#28a745'
+      case 'cancelled': return '#dc3545'
+      default: return '#6c757d'
+    }
+  }
   return (
     <div> 
             <div className="col-12 cart-item-body my-2 d-flex px-2 ">

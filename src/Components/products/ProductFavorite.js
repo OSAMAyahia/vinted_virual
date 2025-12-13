@@ -32,7 +32,7 @@ const ProductsFavorite = ({ product }) => {
             <Link to={`/products/${product._id}`}>
                 <img
                     onClick={scrollToTop}
-                    src={`http://localhost:8000/users/${product.imageCover}`}
+                    src={product.imageCover}
                     className="card-img-top"
                     alt={product.title || 'Product Image'}
                 />

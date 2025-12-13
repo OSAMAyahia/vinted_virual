@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createfavorite, Deletefavorite } from './../../Redux/Actions/FavoriteAction';
+import CartAction from './../../Redux/Actions/CartAction';
 import { useDispatch } from 'react-redux';
 
 const ProductsCategory = ({ product }) => {
@@ -32,6 +33,11 @@ const ProductsCategory = ({ product }) => {
     if (!userId) return
     await dispatch(Deletefavorite({ userId:userId, productId: productID }))
     setIsFavorited(false);
+  }
+
+  const addToCart = async (productID) => {
+    if (!userId) return
+    await dispatch(CartAction(productID, { color: product.colors?.[0] || '#000000' }))
   }
   
   return (
@@ -66,7 +72,7 @@ const ProductsCategory = ({ product }) => {
         >
           <img
             onClick={scrollToTop}
-            src={`http://localhost:8000/users/${product.imageCover}`}
+            src={product.imageCover}
             style={{
               position: 'absolute',
               top: '0',
@@ -210,6 +216,33 @@ const ProductsCategory = ({ product }) => {
               alt='rating'
             />
           </div>
+        </div>
+        
+        {/* Add to Cart Button */}
+        <div style={{
+          padding: '8px 5px 12px',
+          width: '80%',
+          margin: '0 auto'
+        }}>
+          <button
+            onClick={() => addToCart(product._id)}
+            style={{
+              width: '100%',
+              padding: '8px 12px',
+              backgroundColor: '#16a085',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              fontSize: '12px',
+              fontWeight: '500',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#138a72'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#16a085'}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

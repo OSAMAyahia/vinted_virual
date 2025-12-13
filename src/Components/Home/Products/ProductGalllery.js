@@ -12,7 +12,7 @@ const ProductGallery = () => {
 
   let image = [];
   if (item && item.images) {
-    image = item.images.map((i) => ({ original: `http://localhost:8000/users/${i}` }));
+    image = item.images.map((i) => ({ original: i }));
   }
 
   return (
