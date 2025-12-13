@@ -3,6 +3,7 @@ import { useDispatch ,useSelector} from 'react-redux';
  import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddCoupon from './../../Hooks/Coupon/AddCoupon';
+import { getAllCoupons } from './../../Redux/Actions/CouponAcion';
 
  
 
@@ -40,6 +41,8 @@ import AddCoupon from './../../Hooks/Coupon/AddCoupon';
        
      const Raf=useRef()
      const [fetchCoupon] = AddCoupon();
+     const dispatch = useDispatch();
+     const coupons = useSelector(state => state.couponReducer.coupons?.data || []);
 
      const onsubmitcapoun = async () => {
         setloading(true)
@@ -57,6 +60,11 @@ import AddCoupon from './../../Hooks/Coupon/AddCoupon';
 
          }
      };
+
+     // Fetch coupons on component mount
+     useEffect(() => {
+         dispatch(getAllCoupons())
+     }, [dispatch])
      
       return (
         <div>
@@ -100,6 +108,49 @@ import AddCoupon from './../../Hooks/Coupon/AddCoupon';
               </button>
             </div>
           
+           </div>
+           
+           {/* Display existing coupons */}
+           <div className="row mt-5">
+             <div className="col-sm-8">
+               <div className="admin-content-text pb-3">Existing Coupons</div>
+               <div className="table-responsive">
+                 <table className="table table-striped">
+                   <thead>
+                     <tr>
+                       <th>Coupon Code</th>
+                       <th>Discount %</th>
+                       <th>Expiry Date</th>
+                       <th>Status</th>
+                       <th>Actions</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     {coupons.map((coupon) => (
+                       <tr key={coupon._id}>
+                         <td><strong>{coupon.name}</strong></td>
+                         <td>{coupon.discount}%</td>
+                         <td>{new Date(coupon.expire).toLocaleDateString()}</td>
+                         <td>
+                           <span className={`badge ${new Date(coupon.expire) < new Date() ? 'bg-danger' : 'bg-success'}`}>
+                             {new Date(coupon.expire) < new Date() ? 'Expired' : 'Active'}
+                           </span>
+                         </td>
+                         <td>
+                           <button className="btn btn-sm btn-warning me-2">Edit</button>
+                           <button className="btn btn-sm btn-danger">Delete</button>
+                         </td>
+                       </tr>
+                     ))}
+                   </tbody>
+                 </table>
+                 {coupons.length === 0 && (
+                   <div className="text-center p-4">
+                     <p>No coupons found</p>
+                   </div>
+                 )}
+               </div>
+             </div>
            </div>
         </div>
       );

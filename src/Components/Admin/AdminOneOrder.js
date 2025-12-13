@@ -19,15 +19,17 @@ const AdminOneOrder = ({ order }) => {
     <div> 
             <div className="col-12 cart-item-body my-2 d-flex px-2 ">
             
-      <Link to='/admin/orders/23' style={{textDecoration:"none"}}>
-      <img width="160px" height="197px" src={mobile} alt="mobile" /> </Link>
+      <Link to={`/admin/orders/${order._id}`} style={{textDecoration:"none"}}>
+      <img width="160px" height="197px" src={order.items[0]?.imageCover || mobile} alt={order.items[0]?.title || "Product"} /> </Link>
       <div className="w-100">
         <div className="row justify-content-between">
           <div className="col-12 d-flex flex-row justify-content-between">
-            <div className="d-inline pt-2 cat-text">Order Number #32982</div>
+            <div className="d-inline pt-2 cat-text">Order Number {order.orderNumber}</div>
             <div className="d-flex pt-2" style={{ cursor: "pointer" }}>
-            
-                          <div className="cat-text d-inline me-2">Remove</div>
+              <span className="badge me-2" style={{ backgroundColor: getStatusColor(order.status), color: 'white' }}>
+                {order.status}
+              </span>
+              <div className="cat-text d-inline me-2">Remove</div>
               <img src={deleteicon} alt="delete" width="20px" height="24px" />
             </div>
           </div> 
@@ -35,22 +37,22 @@ const AdminOneOrder = ({ order }) => {
         <div className="row justify-content-center mt-2">
           <div className="col-12 d-flex flex-row justify-content-start">
             <div className="d-inline pt-2 cat-title">
-              iPhone XR with 128GB Memory, 4G LTE Enabled with Face ID
+              {order.items[0]?.title || "Product Title"}
             </div>
-            <div className="d-inline ms-2 pt-2 cat-rate me-2">4.5</div>
+            <div className="d-inline ms-2 pt-2 cat-rate me-2">{order.items.length} items</div>
           </div>
         </div>
         <div className="row">
           <div className="col-12 d-flex mt-1">
-            <div className="cat-text  ">Brand:</div>
-            <div className="barnd-text  mx-1">Apple</div>
+            <div className="cat-text">Customer:</div>
+            <div className="barnd-text mx-1">{order.user.name}</div>
           </div>
         </div>
         <div className="row">
           <div className="col-12 mt-1 d-flex">
             <div
               className="color ms-2 border"
-              style={{ backgroundColor: "#E52C2C" }}></div>
+              style={{ backgroundColor: order.items[0]?.color || "#E52C2C" }}></div>
           </div>
         </div>
         <div className="row justify-content-between">
@@ -61,9 +63,11 @@ const AdminOneOrder = ({ order }) => {
                 className="mx-2"
                 type="number"
                 style={{ width: "40px", height: "25px" }}
+                value={order.items[0]?.quantity || 1}
+                readOnly
               />
             </div>
-            <div className="d-inline pt-2 barnd-text">$300</div>
+            <div className="d-inline pt-2 barnd-text">{order.totalPrice} EG</div>
           </div>
         </div>
       </div>

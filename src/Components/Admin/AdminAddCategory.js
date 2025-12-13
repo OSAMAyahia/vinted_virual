@@ -62,11 +62,7 @@ const AdminAddCategory = () => {
       setloading(false);
     }
   };
-const d=useSelector(state=>state.allCategory.category)
-if (d){
-
-  console.log('the d is',d);
-}
+const categories = useSelector(state => state.allCategory.category?.data || [])
   useEffect(() => {
     if (loading === false) {
       setTimeout(() => {
@@ -128,6 +124,48 @@ if (d){
               <h4 style={{ color: 'green' }}>Success</h4>  
             )
           ) : null}
+        </div>
+      </div>
+      
+      {/* Display existing categories */}
+      <div className="row mt-5">
+        <div className="col-sm-8">
+          <div className="admin-content-text pb-3">Existing Categories</div>
+          <div className="table-responsive">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categories.map((category) => (
+                  <tr key={category._id}>
+                    <td>
+                      <img 
+                        src={category.image} 
+                        alt={category.name}
+                        style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                        className="rounded"
+                      />
+                    </td>
+                    <td>{category.name}</td>
+                    <td>
+                      <button className="btn btn-sm btn-warning me-2">Edit</button>
+                      <button className="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {categories.length === 0 && (
+              <div className="text-center p-4">
+                <p>No categories found</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

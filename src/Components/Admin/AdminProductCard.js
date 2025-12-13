@@ -13,7 +13,7 @@ const AdminProductCard = ({ product }) => {
             <div> <small>Delete</small> </div>
         </div>
           <Link to={`/products/${product?._id || ':id'}`}>
-          <img  src={product?.imageCover || "https://th.bing.com/th/id/OIF.3sF7C7VygCxjDN7UK0nEEw?rs=1&pid=ImgDetMain"} className="card-img-top" alt={product?.title || "Product"} />
+          <img  src={product?.imageCover || "https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png"} onError={(e) => { e.currentTarget.src = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png' }} className="card-img-top" alt={product?.title || "Product"} />
           </Link>
           <div className='d-flex justify-content-start ms-3 mt-2'>
             <img style={{ width: '29px', height: "28px" }} src='https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/fav-off.png' alt="favorite"/>

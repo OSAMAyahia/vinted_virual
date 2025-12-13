@@ -72,7 +72,8 @@ const ProductsCategory = ({ product }) => {
         >
           <img
             onClick={scrollToTop}
-            src={product.imageCover}
+            src={product.imageCover || 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png'}
+            onError={(e) => { e.currentTarget.src = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png' }}
             style={{
               position: 'absolute',
               top: '0',

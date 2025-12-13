@@ -31,7 +31,7 @@ const products = [
     category: 'Shoes',
     size: '42',
     condition: 'New',
-    colors: ['#000000,#16a085,#E52C2C']
+    colors: ['#000000', '#16a085', '#E52C2C']
   },
   {
     _id: 'p-2',
@@ -46,7 +46,7 @@ const products = [
     category: 'Shoes',
     size: '43',
     condition: 'Good',
-    colors: ['#2c3e50,#8e44ad,#16a085']
+    colors: ['#2c3e50', '#8e44ad', '#16a085']
   },
   {
     _id: 'p-3',
@@ -61,7 +61,7 @@ const products = [
     category: 'Men',
     size: 'L',
     condition: 'Excellent',
-    colors: ['#2980b9,#34495e,#95a5a6']
+    colors: ['#2980b9', '#34495e', '#95a5a6']
   },
   {
     _id: 'p-4',
@@ -76,7 +76,7 @@ const products = [
     category: 'Accessories',
     size: 'One Size',
     condition: 'Very Good',
-    colors: ['#8e44ad,#f1c40f,#e67e22']
+    colors: ['#8e44ad', '#f1c40f', '#e67e22']
   },
   {
     _id: 'p-5',
@@ -92,7 +92,7 @@ const products = [
     category: 'Electronics',
     size: '128GB',
     condition: 'New',
-    colors: ['#000000,#2ecc71,#3498db']
+    colors: ['#000000', '#2ecc71', '#3498db']
   },
   {
     _id: 'p-6',
@@ -107,7 +107,7 @@ const products = [
     category: 'Women',
     size: 'M',
     condition: 'Good',
-    colors: ['#c0392b,#f39c12,#1abc9c']
+    colors: ['#c0392b', '#f39c12', '#1abc9c']
   },
   {
     _id: 'p-7',
@@ -122,7 +122,7 @@ const products = [
     category: 'Kids',
     size: 'S',
     condition: 'Excellent',
-    colors: ['#27ae60,#2980b9,#8e44ad']
+    colors: ['#27ae60', '#2980b9', '#8e44ad']
   },
   {
     _id: 'p-8',
@@ -137,7 +137,187 @@ const products = [
     category: 'Men',
     size: 'M',
     condition: 'Good',
-    colors: ['#2c3e50,#e74c3c,#f1c40f']
+    colors: ['#2c3e50', '#e74c3c', '#f1c40f']
+  },
+  {
+    _id: 'p-9',
+    title: 'Classic White T-Shirt',
+    price: 20,
+    ratingsQuantity: 28,
+    imageCover: 'https://picsum.photos/id/100/800/800',
+    images: [
+      'https://picsum.photos/id/100/800/800'
+    ],
+    description: 'Soft cotton white T-shirt for everyday wear.',
+    category: 'Men',
+    size: 'L',
+    condition: 'New',
+    colors: ['#ffffff', '#000000', '#2c3e50']
+  },
+  {
+    _id: 'p-10',
+    title: 'Running Shorts',
+    price: 30,
+    ratingsQuantity: 17,
+    imageCover: 'https://picsum.photos/id/1011/800/800',
+    images: [
+      'https://picsum.photos/id/1011/800/800'
+    ],
+    description: 'Lightweight breathable shorts ideal for running.',
+    category: 'Men',
+    size: 'M',
+    condition: 'Good',
+    colors: ['#3498db', '#2ecc71', '#34495e']
+  },
+  {
+    _id: 'p-11',
+    title: 'Leather Wallet',
+    price: 45,
+    ratingsQuantity: 22,
+    imageCover: 'https://picsum.photos/id/1060/800/800',
+    images: [
+      'https://picsum.photos/id/1060/800/800'
+    ],
+    description: 'Compact leather wallet with multiple card slots.',
+    category: 'Accessories',
+    size: 'One Size',
+    condition: 'Excellent',
+    colors: ['#8e44ad', '#2c3e50', '#7f8c8d']
+  },
+  {
+    _id: 'p-12',
+    title: 'Women Sneakers',
+    price: 85,
+    ratingsQuantity: 31,
+    imageCover: 'https://picsum.photos/id/1080/800/800',
+    images: [
+      'https://picsum.photos/id/1080/800/800'
+    ],
+    description: 'Comfortable sneakers suitable for everyday wear.',
+    category: 'Shoes',
+    size: '39',
+    condition: 'Very Good',
+    colors: ['#e67e22', '#f1c40f', '#2c3e50']
+  },
+  {
+    _id: 'p-13',
+    title: 'Kids Sneakers',
+    price: 40,
+    ratingsQuantity: 19,
+    imageCover: 'https://picsum.photos/id/1025/800/800',
+    images: [
+      'https://picsum.photos/id/1025/800/800'
+    ],
+    description: 'Durable sneakers designed for kids.',
+    category: 'Kids',
+    size: 'XS',
+    condition: 'Good',
+    colors: ['#27ae60', '#2980b9', '#8e44ad']
+  },
+  {
+    _id: 'p-14',
+    title: 'Smartwatch Pro',
+    price: 199,
+    ratingsQuantity: 54,
+    imageCover: 'https://picsum.photos/id/1044/800/800',
+    images: [
+      'https://picsum.photos/id/1044/800/800'
+    ],
+    description: 'Smartwatch with fitness tracking and notifications.',
+    category: 'Electronics',
+    size: 'One Size',
+    condition: 'New',
+    colors: ['#000000', '#16a085', '#3498db']
+  },
+  {
+    _id: 'p-15',
+    title: 'Formal Shirt',
+    price: 55,
+    ratingsQuantity: 26,
+    imageCover: 'https://picsum.photos/id/1027/800/800',
+    images: [
+      'https://picsum.photos/id/1027/800/800'
+    ],
+    description: 'Classic formal shirt suitable for office wear.',
+    category: 'Men',
+    size: 'XL',
+    condition: 'Excellent',
+    colors: ['#ffffff', '#2c3e50', '#95a5a6']
+  },
+  {
+    _id: 'p-16',
+    title: 'Women Handbag',
+    price: 150,
+    ratingsQuantity: 37,
+    imageCover: 'https://picsum.photos/id/1050/800/800',
+    images: [
+      'https://picsum.photos/id/1050/800/800'
+    ],
+    description: 'Elegant handbag with spacious compartments.',
+    category: 'Accessories',
+    size: 'One Size',
+    condition: 'Very Good',
+    colors: ['#8e44ad', '#f1c40f', '#e67e22']
+  },
+  {
+    _id: 'p-17',
+    title: 'Adidas Hoodie',
+    price: 70,
+    ratingsQuantity: 33,
+    imageCover: 'https://picsum.photos/id/1035/800/800',
+    images: [
+      'https://picsum.photos/id/1035/800/800'
+    ],
+    description: 'Warm hoodie perfect for casual wear.',
+    category: 'Men',
+    size: 'L',
+    condition: 'Good',
+    colors: ['#2c3e50', '#8e44ad', '#1abc9c']
+  },
+  {
+    _id: 'p-18',
+    title: 'Nike Joggers',
+    price: 65,
+    ratingsQuantity: 29,
+    imageCover: 'https://picsum.photos/id/1033/800/800',
+    images: [
+      'https://picsum.photos/id/1033/800/800'
+    ],
+    description: 'Comfortable joggers for workouts and daily wear.',
+    category: 'Men',
+    size: 'M',
+    condition: 'Excellent',
+    colors: ['#000000', '#95a5a6', '#16a085']
+  },
+  {
+    _id: 'p-19',
+    title: 'Summer Hat',
+    price: 25,
+    ratingsQuantity: 14,
+    imageCover: 'https://picsum.photos/id/1032/800/800',
+    images: [
+      'https://picsum.photos/id/1032/800/800'
+    ],
+    description: 'Lightweight hat for sunny days.',
+    category: 'Accessories',
+    size: 'One Size',
+    condition: 'New',
+    colors: ['#f1c40f', '#e67e22', '#2c3e50']
+  },
+  {
+    _id: 'p-20',
+    title: 'Bluetooth Earbuds',
+    price: 89,
+    ratingsQuantity: 45,
+    imageCover: 'https://picsum.photos/id/1062/800/800',
+    images: [
+      'https://picsum.photos/id/1062/800/800'
+    ],
+    description: 'Wireless earbuds with noise cancellation.',
+    category: 'Electronics',
+    size: 'One Size',
+    condition: 'New',
+    colors: ['#000000', '#2ecc71', '#3498db']
   }
 ]
 const reviews = {

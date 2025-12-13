@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { createBrand } from '../../Redux/Actions/BrandAction';
+import { createBrand, getAllBrand } from '../../Redux/Actions/BrandAction';
 import { ToastContainer,toast } from 'react-toastify';
 const avatar= "https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/avatar.png"
 const AdminAddBrand = () => { 
@@ -51,9 +51,14 @@ const AdminAddBrand = () => {
                    setname('')
             setimg(avatar)
         }
-     
-        
     },[loading])
+
+    // Fetch brands on component mount
+    useEffect(() => {
+        dispatch(getAllBrand())
+    }, [dispatch])
+
+    const brands = useSelector(state => state.allBrand.brand?.data || [])
     return (
         <div>
             <ToastContainer/>
@@ -78,6 +83,48 @@ const AdminAddBrand = () => {
             <div className="row">
                 <div className="col-sm-8 d-flex justify-content-end">
                     <button onClick={handleSubmit} className="btn btn-primary d-inline mt-2">Save Changes</button>
+                </div>
+            </div>
+            
+            {/* Display existing brands */}
+            <div className="row mt-5">
+                <div className="col-sm-8">
+                    <div className="admin-content-text pb-3">Existing Brands</div>
+                    <div className="table-responsive">
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Logo</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {brands.map((brand) => (
+                                    <tr key={brand._id}>
+                                        <td>
+                                            <img 
+                                                src={brand.image} 
+                                                alt={brand.name}
+                                                style={{ width: '50px', height: '50px', objectFit: 'contain' }}
+                                                className="rounded"
+                                            />
+                                        </td>
+                                        <td>{brand.name}</td>
+                                        <td>
+                                            <button className="btn btn-sm btn-warning me-2">Edit</button>
+                                            <button className="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        {brands.length === 0 && (
+                            <div className="text-center p-4">
+                                <p>No brands found</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
