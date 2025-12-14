@@ -40,12 +40,19 @@ const NavBarLogin = () => {
       <nav className="navbar navbar-expand-lg border navbar-light bg-light">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand d-flex align-items-center">
-            <img
-              src="https://clipground.com/images/ecommerce-logo-png-19.png"
-              style={{ width: "140px", height: "50px", objectFit: "contain" }}
-              alt="logo"
-            />
-          </Link>
+          <div style={{ 
+            backgroundColor: '#8B4513', 
+            padding: '8px 15px', 
+            borderRadius: '12px',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: '1.2rem',
+            letterSpacing: '1px',
+            boxShadow: '0 2px 8px rgba(139, 69, 19, 0.3)'
+          }}>
+            متجرنا
+          </div>
+        </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -63,10 +70,10 @@ const NavBarLogin = () => {
               {/* Cart Item */}
               <li className="nav-item d-flex align-items-center position-relative">
                 <Link to="/cart" className="nav-link d-flex align-items-center"> 
-                  <ShoppingCart color="#000000" size={24} />
+                  <ShoppingCart color="#8B4513" size={24} />
                   <span
-                    className="position-absolute badge rounded-pill bg-dark"
-                    style={{ top: '-10px', right: '-10px', fontSize: '10px' }}
+                    className="position-absolute badge rounded-pill"
+                    style={{ top: '-10px', right: '-10px', fontSize: '10px', backgroundColor: '#8B4513' }}
                   >
                     {cartCount}
                   </span>
@@ -78,17 +85,17 @@ const NavBarLogin = () => {
                 <Link 
                   to="/admin/products" 
                   className="btn d-flex align-items-center" 
-                  style={{ backgroundColor: '#000000', color: 'white', fontWeight: '500', border: 'none' }}
+                  style={{ backgroundColor: '#8B4513', color: 'white', fontWeight: '500', border: 'none', borderRadius: '8px' }}
                 >
                   <i className="fas fa-store me-1"></i> 
-                  Sell Now
+                  بيع الآن
                 </Link>
               </li>
 
               {user ? (
                 <li className="nav-item dropdown">
                   <Link
-                    style={{ fontSize: '1.1rem', fontWeight: "500", background: "#000000", padding: "5px 10px", borderRadius: "5px", border: 'none' }}
+                    style={{ fontSize: '1.1rem', fontWeight: "500", background: "#8B4513", padding: "5px 10px", borderRadius: "8px", border: 'none' }}
                     className="nav-link dropdown-toggle text-white"
                     to="#"
                     id="navbarDropdown"
@@ -109,14 +116,14 @@ const NavBarLogin = () => {
                   <Link 
                     to="/login" 
                     className="btn d-flex align-items-center" 
-                    style={{ backgroundColor: '#000000', color: 'white', fontWeight: '500', border: 'none' }}
+                    style={{ backgroundColor: '#8B4513', color: 'white', fontWeight: '500', border: 'none', borderRadius: '8px' }}
                   >
                     <img
                       src='https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/login.png'
                       style={{ width: "24px", height: "24px", marginRight: "8px" }}
                       alt="login"
                     />
-                    Login
+                    تسجيل الدخول
                   </Link>
                 </li>
               )}

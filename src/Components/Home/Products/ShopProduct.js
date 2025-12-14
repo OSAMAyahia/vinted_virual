@@ -27,7 +27,19 @@ const ShopProduct = () => {
                   </div>
                 ))
               ) : (
-                <p>No products found.</p>
+                <div className="col-12 text-center py-5">
+                  <div className="mb-4">
+                    <i className="fas fa-search" style={{ fontSize: '4rem', color: '#ccc' }}></i>
+                  </div>
+                  <h4 className="text-muted mb-3">لا توجد منتجات</h4>
+                  <p className="text-muted">حاول تغيير معايير البحث أو تصفح جميع المنتجات</p>
+                  <button 
+                    className="btn btn-outline-secondary mt-3"
+                    onClick={() => window.location.href = '/products'}
+                  >
+                    عرض جميع المنتجات
+                  </button>
+                </div>
               )}
             </div>
           </div>

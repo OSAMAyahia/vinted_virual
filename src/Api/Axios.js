@@ -302,48 +302,51 @@ const products = [
   },
   {
     _id: 'p-17',
-    title: 'Adidas Hoodie',
-    price: 70,
+    title: 'Zara Blazer',
+    price: 120,
     ratingsQuantity: 33,
-    imageCover: 'https://picsum.photos/id/1035/800/800',
+    imageCover: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
     images: [
-      'https://picsum.photos/id/1035/800/800'
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80'
     ],
-    description: 'Warm hoodie perfect for casual wear.',
+    description: 'أنيق blazer للمناسبات الرسمية.',
     category: 'Men',
     size: 'L',
-    condition: 'Good',
-    colors: ['#2c3e50', '#8e44ad', '#1abc9c']
+    condition: 'ممتاز',
+    colors: ['#2c3e50', '#8e44ad', '#1abc9c'],
+    brand: 'Zara'
   },
   {
     _id: 'p-18',
-    title: 'Nike Joggers',
-    price: 65,
+    title: 'Women Leather Jacket',
+    price: 180,
     ratingsQuantity: 29,
-    imageCover: 'https://picsum.photos/id/1033/800/800',
+    imageCover: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80',
     images: [
-      'https://picsum.photos/id/1033/800/800'
+      'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80'
     ],
-    description: 'Comfortable joggers for workouts and daily wear.',
-    category: 'Men',
+    description: 'جاكيت جلد أنيق للنساء.',
+    category: 'Women',
     size: 'M',
-    condition: 'Excellent',
-    colors: ['#000000', '#95a5a6', '#16a085']
+    condition: 'ممتاز',
+    colors: ['#000000', '#8B4513', '#2F4F4F'],
+    brand: 'Zara'
   },
   {
     _id: 'p-19',
-    title: 'Summer Hat',
-    price: 25,
-    ratingsQuantity: 14,
-    imageCover: 'https://picsum.photos/id/1032/800/800',
+    title: 'Kids School Bag',
+    price: 45,
+    ratingsQuantity: 24,
+    imageCover: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
     images: [
-      'https://picsum.photos/id/1032/800/800'
+      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80'
     ],
-    description: 'Lightweight hat for sunny days.',
-    category: 'Accessories',
+    description: 'حقيبة مدرسة عملية للأطفال.',
+    category: 'Kids',
     size: 'One Size',
-    condition: 'New',
-    colors: ['#f1c40f', '#e67e22', '#2c3e50']
+    condition: 'جديد',
+    colors: ['#4169E1', '#32CD32', '#FF6347'],
+    brand: 'Nike'
   },
   {
     _id: 'p-20',
@@ -359,6 +362,54 @@ const products = [
     size: 'One Size',
     condition: 'New',
     colors: ['#000000', '#2ecc71', '#3498db']
+  },
+  {
+    _id: 'p-21',
+    title: 'Gucci Handbag',
+    price: 450,
+    ratingsQuantity: 38,
+    imageCover: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80'
+    ],
+    description: 'حقيبة يد فاخرة من غوتشي.',
+    category: 'Accessories',
+    size: 'Medium',
+    condition: 'ممتاز',
+    colors: ['#8B4513', '#000000', '#DAA520'],
+    brand: 'Gucci'
+  },
+  {
+    _id: 'p-22',
+    title: 'Kids Winter Coat',
+    price: 85,
+    ratingsQuantity: 22,
+    imageCover: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=800&q=80'
+    ],
+    description: 'معطف شتوي دافئ للأطفال.',
+    category: 'Kids',
+    size: 'S',
+    condition: 'جديد',
+    colors: ['#000080', '#B22222', '#228B22'],
+    brand: 'Zara'
+  },
+  {
+    _id: 'p-23',
+    title: 'Running Watch',
+    price: 199,
+    ratingsQuantity: 67,
+    imageCover: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80'
+    ],
+    description: 'ساعة رياضية متقدمة لممارسة الرياضة.',
+    category: 'Electronics',
+    size: 'One Size',
+    condition: 'ممتاز',
+    colors: ['#000000', '#FF4500', '#4169E1'],
+    brand: 'Nike'
   }
 ]
 const reviews = {
