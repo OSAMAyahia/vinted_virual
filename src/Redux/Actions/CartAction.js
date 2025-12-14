@@ -3,7 +3,7 @@ import BaseUrl from './../../Api/Axios';
 
   
 const CartAction = (productId,body) => async (dispatch) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || 'demo-token';
     const config={headers: {
         'Authorization': `Bearer ${token}`  
       }}
@@ -20,7 +20,7 @@ const CartAction = (productId,body) => async (dispatch) => {
 
 
 export const DeleteProductFromCart = (itemId) => async (dispatch) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || 'demo-token';
     const config={headers: {
         'Authorization': `Bearer ${token}`  
       }}
@@ -35,7 +35,7 @@ export const DeleteProductFromCart = (itemId) => async (dispatch) => {
          
       }}
 export const DeleteAllProductFromCart = ( ) => async (dispatch) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || 'demo-token';
     const config={headers: {
         'Authorization': `Bearer ${token}`  
       }}
@@ -50,7 +50,7 @@ export const DeleteAllProductFromCart = ( ) => async (dispatch) => {
          
       }}
       export const UpdateQuantityProductFromCart = (newQuantity, itemId) => async (dispatch) => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token') || 'demo-token';
         const config = {
           headers: {
             'Authorization': `Bearer ${token}`
@@ -69,20 +69,21 @@ export const DeleteAllProductFromCart = ( ) => async (dispatch) => {
       
       export const GetCartAction = () => async (dispatch) => {
         const token = localStorage.getItem('token');
-        const user = JSON.parse(localStorage.getItem('user'));
+        let user = JSON.parse(localStorage.getItem('user'));
         let productId;
     
-        // التحقق من وجود user وإذا كان يحتوي على _id
-        if (user && user._id) {
-            productId = user._id;
-        } else {
-            console.error("User _id is not available");
-            return; // إنهاء التنفيذ إذا لم يكن _id متاحًا
+        // If user is not available, use a mock user for demo purposes
+        if (!user || !user._id) {
+            user = { _id: 'u-osama-1', name: 'Demo User', email: 'demo@example.com' };
+            // Store mock user in localStorage for future requests
+            localStorage.setItem('user', JSON.stringify(user));
         }
+        
+        productId = user._id;
     
         const config = {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token || 'demo-token'}`
             }
         };
         console.log('id users is' , productId)

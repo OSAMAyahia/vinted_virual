@@ -37,8 +37,8 @@ const CategoryCard = () => {
         ))
       ) : (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexGrow: 1,  }}>
-        <div class="spinner-grow spinner-grow-sm" role="status">
-  <span class="visually-hidden">Loading...</span>
+        <div className="spinner-grow spinner-grow-sm" role="status">
+  <span className="visually-hidden">Loading...</span>
 </div>
       </div>
       

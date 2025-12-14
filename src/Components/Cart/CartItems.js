@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {  UpdateQuantityProductFromCart, DeleteProductFromCart } from './../../Redux/Actions/CartAction';
 import { useDispatch } from 'react-redux';
 
-const mobilePlaceholder = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png';
+const mobilePlaceholder = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80';
 const deleteicon = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/delete.png';
 
 const CartItem = ({ item }) => {

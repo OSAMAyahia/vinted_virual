@@ -13,7 +13,7 @@ const Subtitle = () => {
         <h4>Category</h4>
        
        <Link to='/allcategory' >
-       <button onClick={ scrollToTop} type="button" class="btn btn-outline-secondary">more</button>
+       <button onClick={ scrollToTop} type="button" className="btn btn-outline-secondary">more</button>
        </Link> 
         </div>
       

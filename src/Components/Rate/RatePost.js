@@ -51,17 +51,44 @@ const RatePost = ({ onAddComment }) => {
                 <div className="col d-flex me-4 pb-2">
                     <textarea
                         className="input-form-area p-2 mt-3"
-                        rows="2"
+                        rows="3"
                         cols="20"
-                        placeholder="Write your comment..."
+                        placeholder="Share your experience with this product..."
                         onChange={handleReviewChange}
                         value={review}
+                        style={{
+                            border: '2px solid #e0e0e0',
+                            borderRadius: '8px',
+                            resize: 'vertical',
+                            minHeight: '80px',
+                            transition: 'border-color 0.3s ease'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#16a085'}
+                        onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
                     />
                     <div className="d-flex ms-3 mt-3 align-items-center">
                         <button
                             onClick={handleSubmitComment}
-                            className="product-cart-add px-3 py-2 text-center d-inline"
-                            disabled={!review.trim() || !rate} // Disable if no review or rating
+                            className="product-cart-add px-4 py-2 text-center d-inline"
+                            disabled={!review.trim() || !rate}
+                            style={{
+                                border: 'none',
+                                borderRadius: '6px',
+                                fontWeight: 'bold',
+                                transition: 'all 0.3s ease',
+                                cursor: !review.trim() || !rate ? 'not-allowed' : 'pointer',
+                                opacity: !review.trim() || !rate ? 0.6 : 1
+                            }}
+                            onMouseEnter={(e) => {
+                                if (!(!review.trim() || !rate)) {
+                                    e.target.style.transform = 'translateY(-2px)';
+                                    e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+                                }
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.transform = 'translateY(0)';
+                                e.target.style.boxShadow = 'none';
+                            }}
                         >
                             Add Comment
                         </button>

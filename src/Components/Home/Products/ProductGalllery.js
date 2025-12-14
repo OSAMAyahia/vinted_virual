@@ -12,7 +12,20 @@ const ProductGallery = () => {
 
   let image = [];
   if (item && item.images) {
-    image = item.images.map((i) => ({ original: i }));
+    image = item.images.map((i) => ({ 
+      original: i || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+      thumbnail: i || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80'
+    }));
+  } else if (item && item.imageCover) {
+    image = [{
+      original: item.imageCover || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+      thumbnail: item.imageCover || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80'
+    }];
+  } else {
+    image = [{
+      original: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+      thumbnail: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80'
+    }];
   }
 
   return (

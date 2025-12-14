@@ -12,7 +12,7 @@ const SubtitleBrand = () => {
     <div className='d-flex justify-content-between'>
         <h4>Famous Brands</h4>
         <Link to ='allbrands'>
-        <button onClick={ scrollToTop} type="button" class="btn btn-outline-secondary">more</button>
+        <button onClick={ scrollToTop} type="button" className="btn btn-outline-secondary">more</button>
         </Link>
         </div>
       

@@ -5,7 +5,7 @@ import CreateCart from './../../../Hooks/CartHooks/CreateCart';
 import {  ToastContainer } from 'react-toastify';
 import GetAllProductFromCart from './../../../Hooks/CartHooks/GetAllProductFromCart';
 
-const ProductText = (ئ) => {
+const ProductText = () => {
   const{id}=useParams()
    const [item]=GetDetailsOneProductHooks(id)
   const [ind,setind]=useState()
@@ -55,7 +55,7 @@ const ProductText = (ئ) => {
       <div className="row mt-1">
   <div className="col-md-8 d-flex">
     {item && item.colors && item.colors.length > 0 ? (
-      item.colors[0].split(',').map((color, index) => (
+      item.colors.map((color, index) => (
         <div
         key={index}
         onClick={()=>colormethod(index,color)}
@@ -93,8 +93,32 @@ const ProductText = (ئ) => {
 
       <div className="row mt-4">
         <div className="col-md-12">
-          <div className="product-price d-inline px-3 py-3 border">34,000 EGP</div>
-          <div onClick={addcart} className="product-cart-add px-3 py-3 d-inline mx-3">Add to Cart</div>
+          <div className="product-price d-inline px-3 py-3 border" style={{ 
+            fontSize: '1.5rem', 
+            fontWeight: 'bold', 
+            color: '#16a085',
+            backgroundColor: '#f8f9fa'
+          }}>
+            {item.price || item.discountedPrice || '0'} EGP
+          </div>
+          <div 
+            onClick={addcart} 
+            className="product-cart-add px-3 py-3 d-inline mx-3"
+            style={{
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#138d75';
+              e.target.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#16a085';
+              e.target.style.transform = 'translateY(0)';
+            }}
+          >
+            Add to Cart
+          </div>
         </div>
       </div>
     </div>

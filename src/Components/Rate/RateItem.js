@@ -118,15 +118,30 @@ const RateItem = ({ review, onAddComment }) => {
 
             {/* Review Display */}
             <div className="row mt-3">
-                <div className="col d-flex me-5">
-                    <div className="rate-name d-inline ms-2 me-2">{review?.user?.name}</div>
-                    <img src={rate} alt="rating icon" height="16px" width="16px" />
-                    <div className="cat-rate d-inline ms-1">{review?.ratings}</div>
+                <div className="col d-flex me-5 align-items-center">
+                    <div className="rate-name d-inline ms-2 me-2" style={{ fontWeight: 'bold', color: '#333' }}>
+                        {review?.user?.name}
+                    </div>
+                    <div className="d-flex align-items-center">
+                        <img src={rate} alt="rating icon" height="16px" width="16px" />
+                        <div className="cat-rate d-inline ms-1" style={{ color: '#ffc107', fontWeight: 'bold' }}>
+                            {review?.ratings}
+                        </div>
+                    </div>
+                    {review?.createdAt && (
+                        <div className="ms-auto text-muted" style={{ fontSize: '0.8rem' }}>
+                            {new Date(review.createdAt).toLocaleDateString()}
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="row border-bottom mx-2">
                 <div className="col d-flex justify-content-between me-4 pb-2">
-                    <div className="rate-description d-inline ms-2">
+                    <div className="rate-description d-inline ms-2" style={{ 
+                        fontSize: '1rem', 
+                        color: '#555',
+                        lineHeight: '1.5'
+                    }}>
                         {review?.title}
                     </div>
                     {isOwner && (
@@ -134,16 +149,30 @@ const RateItem = ({ review, onAddComment }) => {
                             <img
                                 className="mx-2"
                                 src={Delete}
-                                style={{ height: "20px", width: "20px", cursor: 'pointer' }}
+                                style={{ 
+                                    height: "20px", 
+                                    width: "20px", 
+                                    cursor: 'pointer',
+                                    transition: 'transform 0.2s ease'
+                                }}
                                 alt="Delete Icon"
                                 onClick={() => setIsModalOpen(true)}
+                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                             />
                             <img
                                 className="mx-1"
                                 src={update}
-                                style={{ height: "20px", width: "20px", cursor: 'pointer' }}
+                                style={{ 
+                                    height: "20px", 
+                                    width: "20px", 
+                                    cursor: 'pointer',
+                                    transition: 'transform 0.2s ease'
+                                }}
                                 alt="Update Icon"
                                 onClick={() => setIsUpdateModalOpen(true)}
+                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                             />
                         </div>
                     )}

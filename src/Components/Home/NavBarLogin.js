@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetCartAction } from './../../Redux/Actions/CartAction';
-import { Link } from 'react-router-dom';
-import { ShoppingCart } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ShoppingCart, Search } from 'lucide-react';
 
 const NavBarLogin = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const Logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     setUser(null);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
   };
 
   const data = useSelector(state => state.Cart);
@@ -28,13 +37,12 @@ const NavBarLogin = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg border" >
-        <div className="container">
-          <Link to="/">
+      <nav className="navbar navbar-expand-lg border navbar-light bg-light">
+        <div className="container-fluid">
+          <Link to="/" className="navbar-brand d-flex align-items-center">
             <img
-              className='navbar-brand'
               src="https://clipground.com/images/ecommerce-logo-png-19.png"
-              style={{ width: "120px", height: "60px" }}
+              style={{ width: "140px", height: "50px", objectFit: "contain" }}
               alt="logo"
             />
           </Link>
@@ -49,40 +57,48 @@ const NavBarLogin = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse " id="navbarScroll">
-            <ul className="navbar-nav me-auto gap-4  my-2 my-lg-0 navbar-nav-scroll">
+          <div className="collapse navbar-collapse" id="navbarScroll">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
               
               {/* Cart Item */}
-              <li className="nav-item d-flex align-items-center position-relative me-3">
-                <div className="d-flex align-items-center position-relative" >
-                   <Link to="/cart"> 
-                  <ShoppingCart color="#008080" size={24} />
+              <li className="nav-item d-flex align-items-center position-relative">
+                <Link to="/cart" className="nav-link d-flex align-items-center"> 
+                  <ShoppingCart color="#000000" size={24} />
                   <span
-                    className="position-absolute badge rounded-pill bg-danger"
+                    className="position-absolute badge rounded-pill bg-dark"
                     style={{ top: '-10px', right: '-10px', fontSize: '10px' }}
                   >
                     {cartCount}
                   </span>
-                  </Link>
-                  {/* <Link className="nav-link active ms-1" aria-current="page" to="/cart" style={{ color: "#212529", fontWeight: "500" }}>Cart</Link> */}
-                </div>
+                </Link>
+              </li>
+
+              {/* Sell Now Button */}
+              <li className="nav-item d-flex align-items-center">
+                <Link 
+                  to="/admin/products" 
+                  className="btn d-flex align-items-center" 
+                  style={{ backgroundColor: '#000000', color: 'white', fontWeight: '500', border: 'none' }}
+                >
+                  <i className="fas fa-store me-1"></i> 
+                  Sell Now
+                </Link>
               </li>
 
               {user ? (
                 <li className="nav-item dropdown">
                   <Link
-                    style={{ fontSize: '1.1rem', fontWeight: "500", background: "#008080", padding: "5px 10px", borderRadius: "5px" }}
-                    className="nav-link text-white dropdown-toggle"
-                    to="/"
+                    style={{ fontSize: '1.1rem', fontWeight: "500", background: "#000000", padding: "5px 10px", borderRadius: "5px", border: 'none' }}
+                    className="nav-link dropdown-toggle text-white"
+                    to="#"
                     id="navbarDropdown"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                   <span className="text-white"> {user.name}</span>
-
+                   <span className="text-white">{user.name}</span>
                   </Link>
-                  <ul className="dropdown-menu text-white " aria-labelledby="navbarDropdown">
+                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><Link className="dropdown-item" to="/admin/products">Sell now</Link></li>
                     <li><Link className="dropdown-item" to="/user/orders">Your Profile</Link></li>
                     <li><Link onClick={Logout} className="dropdown-item" to="/">Logout</Link></li>
@@ -90,33 +106,36 @@ const NavBarLogin = () => {
                 </li>
               ) : (
                 <li className="nav-item d-flex align-items-center">
-                  <div className="d-flex align-items-center" style={{ background: "#008080", padding: "5px 10px", borderRadius: "5px" }}>
+                  <Link 
+                    to="/login" 
+                    className="btn d-flex align-items-center" 
+                    style={{ backgroundColor: '#000000', color: 'white', fontWeight: '500', border: 'none' }}
+                  >
                     <img
                       src='https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/login.png'
-                      style={{ width: "24px", height: "24px" }}
+                      style={{ width: "24px", height: "24px", marginRight: "8px" }}
                       alt="login"
                     />
-                    <Link className="nav-link active ms-1" aria-current="page" to="/login" style={{ color: "#212529", fontWeight: "500" }}>Login</Link>
-                  </div>
+                    Login
+                  </Link>
                 </li>
               )}
-
-                 {/* Sell Now Button - Always visible */}
-          
             </ul>
-                <li className="nav-item d-flex align-items-center mx-3">
-                <Link 
-                  to="/admin/products" 
-                  className="btn   d-flex align-items-center" 
-                  style={{ fontWeight: "#ffffff"  ,backgroundColor:'#008080 '}}
-                >
-                  <i className="fas fa-store me-1 text-white"></i> 
-<span className="text-white">Sell Now</span>
-                </Link>
-              </li>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+            
+            <form className="d-flex mx-auto" role="search" onSubmit={handleSearch} style={{ maxWidth: '400px', width: '100%' }}>
+              <div className="input-group">
+                <input 
+                  className="form-control" 
+                  type="search" 
+                  placeholder="Search products..." 
+                  aria-label="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button className="btn btn-outline-secondary" type="submit">
+                  <Search size={16} />
+                </button>
+              </div>
             </form>
           </div>
         </div>

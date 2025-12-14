@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { createfavorite, Deletefavorite } from './../../Redux/Actions/FavoriteAction';
 import CartAction from './../../Redux/Actions/CartAction';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const ProductsCategory = ({ product }) => {
   const [isFavorited, setIsFavorited] = useState(false); 
@@ -24,20 +25,44 @@ const ProductsCategory = ({ product }) => {
   };
 
   const addfavorite = async (productID) => {
-    if (!userId) return
-    await dispatch(createfavorite({ userId, productId: productID }));
-    setIsFavorited(true);
+    if (!userId) {
+      toast.error('يرجى تسجيل الدخول أولاً');
+      return;
+    }
+    try {
+      await dispatch(createfavorite({ userId, productId: productID }));
+      setIsFavorited(true);
+      toast.success('تمت إضافة المنتج إلى المفضلة بنجاح!');
+    } catch (error) {
+      toast.error('حدث خطأ أثناء إضافة المنتج إلى المفضلة');
+    }
   };
 
   const deletefromfavorites = async(productID) => {
-    if (!userId) return
-    await dispatch(Deletefavorite({ userId:userId, productId: productID }))
-    setIsFavorited(false);
+    if (!userId) {
+      toast.error('يرجى تسجيل الدخول أولاً');
+      return;
+    }
+    try {
+      await dispatch(Deletefavorite({ userId:userId, productId: productID }))
+      setIsFavorited(false);
+      toast.success('تمت إزالة المنتج من المفضلة بنجاح!');
+    } catch (error) {
+      toast.error('حدث خطأ أثناء إزالة المنتج من المفضلة');
+    }
   }
 
   const addToCart = async (productID) => {
-    if (!userId) return
-    await dispatch(CartAction(productID, { color: product.colors?.[0] || '#000000' }))
+    if (!userId) {
+      toast.error('يرجى تسجيل الدخول أولاً');
+      return;
+    }
+    try {
+      await dispatch(CartAction(productID, { color: product.colors?.[0] || '#000000' }))
+      toast.success('تمت إضافة المنتج إلى السلة بنجاح!');
+    } catch (error) {
+      toast.error('حدث خطأ أثناء إضافة المنتج إلى السلة');
+    }
   }
   
   return (
@@ -72,8 +97,8 @@ const ProductsCategory = ({ product }) => {
         >
           <img
             onClick={scrollToTop}
-            src={product.imageCover || 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png'}
-            onError={(e) => { e.currentTarget.src = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/mobile.png' }}
+            src={product.imageCover || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80'}
+            onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80' }}
             style={{
               position: 'absolute',
               top: '0',

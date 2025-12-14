@@ -19,12 +19,10 @@ const GetDetailsOneProductHooks = (id) => {
   
     // إعداد البيانات للعرض
     let item = [];
-    if (products.oneProduct
-&& products.oneProduct
-.data && products.oneProduct
-.data.Data) {
-      item = products.oneProduct
-.data.Data;
+    if (products.oneProduct && products.oneProduct.data && products.oneProduct.data.Data) {
+      item = products.oneProduct.data.Data;
+    } else if (products.oneProduct && products.oneProduct.data) {
+      item = products.oneProduct.data;
     }
 
     console.log(" item item  item item  item item ",item);

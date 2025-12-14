@@ -1,5 +1,39 @@
 const users = [{ _id: 'u-osama-1', name: 'Osama', email: 'osama@gmail.com', password: '123456' }]
 const tokens = {}
+
+// Function to ensure default user is available
+const ensureDefaultUser = () => {
+  if (!localStorage.getItem('user')) {
+    const defaultUser = users[0]; // Use first user as default
+    localStorage.setItem('user', JSON.stringify(defaultUser));
+    localStorage.setItem('token', 'mock-jwt-osama');
+    // Also set up the token mapping
+    tokens['mock-jwt-osama'] = defaultUser._id;
+  }
+};
+
+// Function to auto-login default user
+const autoLoginDefaultUser = () => {
+  const defaultUser = users[0];
+  const token = 'mock-jwt-osama';
+  
+  // Set up user data
+  localStorage.setItem('user', JSON.stringify({
+    _id: defaultUser._id,
+    name: defaultUser.name,
+    email: defaultUser.email
+  }));
+  localStorage.setItem('token', token);
+  
+  // Set up token mapping
+  tokens[token] = defaultUser._id;
+  
+  console.log('Auto-logged in default user:', defaultUser.name);
+};
+
+// Call this function when the module loads
+ensureDefaultUser();
+autoLoginDefaultUser();
 const categories = [
   { _id: 'c-men', name: 'Men', image: 'https://images.unsplash.com/photo-1551029506-0804b1b5035f?w=800&q=80' },
   { _id: 'c-women', name: 'Women', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&q=80' },
@@ -19,7 +53,7 @@ const brands = [
 const products = [
   {
     _id: 'p-1',
-    title: 'Nike Air Max',
+    title: 'Nike Air Max 270',
     price: 120,
     ratingsQuantity: 34,
     imageCover: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
@@ -31,16 +65,17 @@ const products = [
     category: 'Shoes',
     size: '42',
     condition: 'New',
-    colors: ['#000000', '#16a085', '#E52C2C']
+    colors: ['#000000', '#16a085', '#E52C2C'],
+    brand: 'Nike'
   },
   {
     _id: 'p-2',
     title: 'Adidas Ultraboost',
     price: 140,
     ratingsQuantity: 18,
-    imageCover: 'https://images.unsplash.com/photo-1528701800489-20be3c546a76?w=800&q=80',
+    imageCover: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
     images: [
-      'https://images.unsplash.com/photo-1528701800489-20be3c546a76?w=800&q=80'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80'
     ],
     description: 'High-performance sneakers designed for comfort and speed.',
     category: 'Shoes',
@@ -50,58 +85,61 @@ const products = [
   },
   {
     _id: 'p-3',
-    title: "Levi's Denim Jacket",
+    title: 'Classic Denim Jacket',
     price: 90,
     ratingsQuantity: 57,
-    imageCover: 'https://images.unsplash.com/photo-1496769336828-c522a3a7e33a?w=800&q=80',
+    imageCover: 'https://images.unsplash.com/photo-1520975954732-35dd22872165?w=800&q=80',
     images: [
-      'https://images.unsplash.com/photo-1496769336828-c522a3a7e33a?w=800&q=80'
+      'https://images.unsplash.com/photo-1520975954732-35dd22872165?w=800&q=80'
     ],
     description: 'Classic denim jacket in perfect condition.',
     category: 'Men',
     size: 'L',
     condition: 'Excellent',
-    colors: ['#2980b9', '#34495e', '#95a5a6']
+    colors: ['#2980b9', '#34495e', '#95a5a6'],
+    brand: "Levi's"
   },
   {
     _id: 'p-4',
-    title: 'Gucci Handbag',
-    price: 320,
-    ratingsQuantity: 12,
-    imageCover: 'https://images.unsplash.com/photo-1526934811203-8f21b10c08b7?w=800&q=80',
+    title: 'Zara Summer Dress',
+    price: 65,
+    ratingsQuantity: 32,
+    imageCover: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80',
     images: [
-      'https://images.unsplash.com/photo-1526934811203-8f21b10c08b7?w=800&q=80'
+      'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80'
     ],
-    description: 'Luxury leather handbag, minimal wear.',
-    category: 'Accessories',
-    size: 'One Size',
+    description: 'Lightweight summer dress perfect for warm weather.',
+    category: 'Women',
+    size: 'M',
     condition: 'Very Good',
-    colors: ['#8e44ad', '#f1c40f', '#e67e22']
+    colors: ['#8e44ad', '#f1c40f', '#e67e22'],
+    brand: 'Zara'
   },
   {
     _id: 'p-5',
-    title: 'Smartphone XYZ',
-    price: 500,
+    title: 'Converse Chuck Taylor',
+    price: 75,
     ratingsQuantity: 89,
-    imageCover: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80',
+    imageCover: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=80',
     images: [
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80',
-      'https://images.unsplash.com/photo-1510552776732-13bb87f0e3b4?w=800&q=80'
+      'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=80',
+      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80'
     ],
-    description: 'Sleek smartphone with excellent camera and battery life.',
-    category: 'Electronics',
-    size: '128GB',
+    description: 'Classic canvas sneakers, perfect casual footwear.',
+    category: 'Shoes',
+    size: '42',
     condition: 'New',
-    colors: ['#000000', '#2ecc71', '#3498db']
+    colors: ['#000000', '#2ecc71', '#3498db'],
+    brand: 'Converse'
   },
   {
     _id: 'p-6',
     title: 'Women Summer Dress',
     price: 65,
     ratingsQuantity: 23,
-    imageCover: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&q=80',
+    imageCover: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80',
     images: [
-      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&q=80'
+      'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80'
     ],
     description: 'Lightweight dress perfect for summer.',
     category: 'Women',
@@ -111,48 +149,51 @@ const products = [
   },
   {
     _id: 'p-7',
-    title: 'Kids Hoodie',
-    price: 35,
-    ratingsQuantity: 15,
-    imageCover: 'https://images.unsplash.com/photo-1497636571219-73f1e39d48bb?w=800&q=80',
+    title: 'Vans Old Skool',
+    price: 65,
+    ratingsQuantity: 45,
+    imageCover: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=80',
     images: [
-      'https://images.unsplash.com/photo-1497636571219-73f1e39d48bb?w=800&q=80'
+      'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=80'
     ],
-    description: 'Cozy hoodie for kids.',
-    category: 'Kids',
-    size: 'S',
-    condition: 'Excellent',
-    colors: ['#27ae60', '#2980b9', '#8e44ad']
+    description: 'Classic skate shoes with iconic side stripe.',
+    category: 'Shoes',
+    size: '42',
+    condition: 'Good',
+    colors: ['#27ae60', '#2980b9', '#8e44ad'],
+    brand: 'Vans'
   },
   {
     _id: 'p-8',
-    title: 'Zara T-Shirt',
+    title: 'H&M Cotton T-Shirt',
     price: 25,
     ratingsQuantity: 42,
     imageCover: 'https://images.unsplash.com/photo-1520975652441-e1e2d6e60000?w=800&q=80',
     images: [
       'https://images.unsplash.com/photo-1520975652441-e1e2d6e60000?w=800&q=80'
     ],
-    description: 'Cotton T-shirt with modern print.',
+    description: 'Premium cotton T-shirt with modern fit.',
     category: 'Men',
     size: 'M',
     condition: 'Good',
-    colors: ['#2c3e50', '#e74c3c', '#f1c40f']
+    colors: ['#2c3e50', '#e74c3c', '#f1c40f'],
+    brand: 'H&M'
   },
   {
     _id: 'p-9',
-    title: 'Classic White T-Shirt',
-    price: 20,
-    ratingsQuantity: 28,
-    imageCover: 'https://picsum.photos/id/100/800/800',
+    title: 'Nike Air Force 1',
+    price: 90,
+    ratingsQuantity: 68,
+    imageCover: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
     images: [
-      'https://picsum.photos/id/100/800/800'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80'
     ],
-    description: 'Soft cotton white T-shirt for everyday wear.',
-    category: 'Men',
-    size: 'L',
+    description: 'Iconic basketball shoes with timeless design.',
+    category: 'Shoes',
+    size: '43',
     condition: 'New',
-    colors: ['#ffffff', '#000000', '#2c3e50']
+    colors: ['#ffffff', '#000000', '#2c3e50'],
+    brand: 'Nike'
   },
   {
     _id: 'p-10',
@@ -340,16 +381,24 @@ const cartsByUser = {
   'u-osama-1': {
     items: [
       { _id: 'p-1', title: 'Nike Air Max', price: 120, quantity: 2, color: '#000000', imageCover: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80' },
-      { _id: 'p-2', title: 'Adidas Ultraboost', price: 140, quantity: 1, color: '#2c3e50', imageCover: 'https://images.unsplash.com/photo-1528701800489-20be3c546a76?w=800&q=80' },
-      { _id: 'p-3', title: 'Classic T-Shirt', price: 25, quantity: 3, color: '#000000', imageCover: 'https://images.unsplash.com/photo-1520975652441-e1e2d6e60000?w=800&q=80' }
+      { _id: 'p-2', title: 'Adidas Ultraboost', price: 140, quantity: 1, color: '#2c3e50', imageCover: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80' },
+      { _id: 'p-3', title: 'Classic T-Shirt', price: 25, quantity: 3, color: '#000000', imageCover: 'https://images.unsplash.com/photo-1520975954732-35dd22872165?w=800&q=80' }
     ],
     coupon: null
+  },
+  'u-ahmed-2': {
+    items: [
+      { _id: 'p-4', title: 'Smartphone XYZ', price: 500, quantity: 1, color: '#000000', imageCover: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' },
+      { _id: 'p-5', title: 'Women Summer Dress', price: 65, quantity: 2, color: '#c0392b', imageCover: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80' }
+    ],
+    coupon: { _id: 'cp-1', code: 'SAVE10', type: 'percent', value: 10 }
   }
 }
 const coupons = [
-  { _id: 'cp-1', code: 'SAVE10', type: 'percent', value: 10 },
-  { _id: 'cp-2', code: 'NEW15', type: 'percent', value: 15 },
-  { _id: 'cp-3', code: 'FLAT50', type: 'flat', value: 50 }
+  { _id: 'cp-1', code: 'SAVE10', type: 'percent', value: 10, image: 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/coupon1.png', description: 'Save 10% on your order', expiry: '2024-12-31' },
+  { _id: 'cp-2', code: 'NEW15', type: 'percent', value: 15, image: 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/coupon2.png', description: '15% off for new customers', expiry: '2024-12-25' },
+  { _id: 'cp-3', code: 'FLAT50', type: 'flat', value: 50, image: 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/coupon3.png', description: '50 EGP off on orders above 200', expiry: '2024-12-20' },
+  { _id: 'cp-4', code: 'WELCOME20', type: 'percent', value: 20, image: 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/coupon4.png', description: 'Welcome offer - 20% off', expiry: '2024-12-15' }
 ]
 const orders = [
   {
@@ -497,7 +546,18 @@ const BaseUrl = {
     if (path.startsWith('api/v1/Review/') && path.endsWith('/review')) {
       const id = path.split('/')[2]
       const list = reviews[id] || []
-      list.push(body || {})
+      const token = config?.headers?.Authorization?.replace('Bearer ', '')
+      const userId = tokens[token]
+      const user = users.find(u => u._id === userId)
+      const newReview = {
+        _id: `r-${Date.now()}`,
+        user: { name: user?.name || body.user?.name || 'Anonymous' },
+        ratings: body.ratings || 0,
+        title: body.title || '',
+        description: body.description || body.title || '',
+        createdAt: body.createdAt || new Date().toISOString()
+      }
+      list.push(newReview)
       reviews[id] = list
       return success({ data: list })
     }
@@ -551,6 +611,19 @@ const BaseUrl = {
       if (it && body && typeof body.quantity !== 'undefined') it.quantity = Math.max(1, Number(body.quantity))
       cartsByUser[userId] = cart
       return success({ data: { cartItems: cart.items } })
+    }
+    if (path === 'api/v1/Coupons') {
+      const newCoupon = {
+        _id: `cp-${Date.now()}`,
+        code: body.name?.toUpperCase() || 'NEWCOUPON',
+        type: 'percent',
+        value: Number(body.discount) || 10,
+        expire: body.expire || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+        image: 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/coupon-default.png',
+        description: `Discount ${body.discount || 10}% off`
+      }
+      coupons.push(newCoupon)
+      return success({ data: newCoupon, message: 'Coupon created successfully' })
     }
     if (path.startsWith('api/v1/Coupons/')) {
       return success({ data: coupons })

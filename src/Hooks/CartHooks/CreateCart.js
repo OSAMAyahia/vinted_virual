@@ -21,7 +21,7 @@ const CreateCart = () => {
              };
 
              if(loading===false) {
-                toasty("the item has already been added to Cart", "success")
+                toasty("تمت إضافة المنتج إلى السلة بنجاح!", "success")
              }
 
    

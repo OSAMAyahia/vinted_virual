@@ -1,4 +1,4 @@
-import   { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { createReview } from './../../Redux/Actions/ReviewAction';
@@ -35,27 +35,36 @@ const ReviewHook = (id) => {
    }, []); // يتم استدعاء useEffect مرة واحدة فقط عند التحميل الأول
    
    const onclick= async()=>{
-        // if (review == ''){
-        //     toasty("please write a review" , "faill")
-        //     return
-        // }
-        // if ( rate < 1 ){
-        //     toasty("the rate review can't be less than one" , "faill")
-        //     return  
-        
-          // setloading(true)
-        await dispatch(createReview(id,   {
-          title: review,
-         ratings:rate,
-          }))
-        //  setloading(false)
-
-        //  if(loading){
-        //   toasty("Review created successfully " , "success")
-
-        //  }
-
+        if (review === ''){
+            toast.error("Please write a review");
+            return
         }
+        if ( rate < 1 ){
+            toast.error("The rating must be at least 1");
+            return  
+        }
+
+        try {
+            const reviewData = {
+                title: review,
+                ratings: rate,
+                user: { name: user?.name || 'Anonymous' },
+                description: review,
+                createdAt: new Date().toISOString()
+            };
+            
+            await dispatch(createReview(id, reviewData));
+            
+            // Clear form after successful submission
+            setreview('');
+            setrate(0);
+            
+            toast.success("Review created successfully!");
+        } catch (error) {
+            toast.error("Failed to create review");
+            console.error('Review creation error:', error);
+        }
+   }
 
 
             

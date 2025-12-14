@@ -73,64 +73,107 @@ const AdminViewCoupon = () => {
         
             return (
                 <div className="container mt-3">
+                    <div className="row">
+                        <div className="col-12 mb-4">
+                            <h2 className="admin-content-text">Available Coupons</h2>
+                        </div>
+                    </div>
+                    
                     {items && items.length > 0 ? (
-                        items.map((item, index) => (
-                            <div key={index} className="user-address-card my-3 px-2">
-                                <div className="row d-flex justify-content-between">
-                                    <div className="col-1">
-                                        <h5 className="p-2">Coupon</h5>
-                                    </div>
-                                    <div className="col-4 d-flex justify-content-end">
-                                        <div className="d-flex p-2">
-                                            <div className="d-flex mx-2">
-                                                <Link className='d-flex' to={`/admin/edit-coupon/${item._id}`} style={{ textDecoration: 'none' }}>
-                                                <img
-                                                    alt="update icon"
-                                                    className="mx-1 mt-2 item-delete-edit"
-                                                    src={update}
-                                                    height="20px"
-                                                    width="20px"
+                        <div className="row">
+                            {items.map((item, index) => (
+                                <div key={index} className="col-md-6 col-lg-4 mb-4">
+                                    <div className="card h-100 shadow-sm coupon-card" style={{ 
+                                        border: '2px dashed #16a085', 
+                                        borderRadius: '15px',
+                                        background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'
+                                    }}>
+                                        <div className="card-body text-center">
+                                            {item.image ? (
+                                                <img 
+                                                    src={item.image} 
+                                                    alt={item.code}
+                                                    className="img-fluid mb-3"
+                                                    style={{ 
+                                                        maxHeight: '100px',
+                                                        borderRadius: '10px'
+                                                    }}
+                                                    onError={(e) => {
+                                                        e.target.src = 'https://raw.githubusercontent.com/bakrgit/08-ecommerce-design-only/refs/heads/master/src/images/coupon-default.png';
+                                                    }}
                                                 />
-                                                    <p className="item-delete-edit">Edit</p>
+                                            ) : (
+                                                <div className="coupon-icon mb-3">
+                                                    <i className="fas fa-ticket-alt fa-3x text-success"></i>
+                                                </div>
+                                            )}
+                                            
+                                            <h5 className="card-title text-primary font-weight-bold">
+                                                {item.code}
+                                            </h5>
+                                            
+                                            <p className="card-text text-muted">
+                                                {item.description || `خصم ${item.discount}% على جميع المنتجات`}
+                                            </p>
+                                            
+                                            <div className="coupon-details mb-3">
+                                                <div className="d-flex justify-content-between align-items-center mb-2">
+                                                    <span className="text-muted">نسبة الخصم:</span>
+                                                    <span className="badge bg-success" style={{ fontSize: '1rem' }}>
+                                                        {item.discount}%
+                                                    </span>
+                                                </div>
+                                                
+                                                <div className="d-flex justify-content-between align-items-center mb-2">
+                                                    <span className="text-muted">تاريخ الانتهاء:</span>
+                                                    <span className="text-dark">
+                                                        {new Date(item.expire || item.expiry).toLocaleDateString()}
+                                                    </span>
+                                                </div>
+                                                
+                                                <div className="d-flex justify-content-between align-items-center">
+                                                    <span className="text-muted">الحالة:</span>
+                                                    <span className={`badge ${
+                                                        new Date(item.expire || item.expiry) < new Date() 
+                                                            ? 'bg-danger' 
+                                                            : 'bg-success'
+                                                    }`}>
+                                                        {new Date(item.expire || item.expiry) < new Date() 
+                                                            ? 'منتهي' 
+                                                            : 'فعال'
+                                                        }
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="coupon-actions">
+                                                <Link 
+                                                    to={`/admin/edit-coupon/${item._id}`} 
+                                                    className="btn btn-warning btn-sm me-2"
+                                                    style={{ borderRadius: '20px' }}
+                                                >
+                                                    <i className="fas fa-edit"></i> تعديل
                                                 </Link>
-                                            </div>
-                                            <div className="d-flex">
-                                                <img
-                                                    alt="delete icon"
-                                                    className="mx-1 mt-2 item-delete-edit"
-                                                    src={deleteicon}
-                                                      height="20px"
-                                                    width="20px"
+                                                
+                                                <button 
                                                     onClick={() => handleDeleteClick(item._id)}
-                                                />
-                                                <p className="item-delete-edit"  onClick={() => handleDeleteClick(item._id)}>Remove</p>
+                                                    className="btn btn-danger btn-sm"
+                                                    style={{ borderRadius: '20px' }}
+                                                >
+                                                    <i className="fas fa-trash"></i> حذف
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-        
-                                <div className="row">
-                                    <div className="col-12">
-                                        <div style={{ color: '#555550', fontSize: '14px', textAlign: 'left' }}>
-                                            {item.name}
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div className="row mt-3">
-                                    <div className="col-12 d-flex">
-                                        <div style={{ color: '#555550', fontSize: '16px' }}>
-                                            {new Date(item.expire).toLocaleDateString()}
-                                        </div>
-                                        <div style={{ color: '#979797', fontSize: '16px' }} className="mx-2">
-                                            Discount: {item.discount}%
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))
+                            ))}
+                        </div>
                     ) : (
-                        <p>No coupons available.</p>
+                        <div className="text-center py-5">
+                            <i className="fas fa-ticket-alt fa-5x text-muted mb-4"></i>
+                            <h4 className="text-muted">لا توجد كوبونات متاحة</h4>
+                            <p className="text-muted">يمكنك إضافة كوبونات جديدة من صفحة الإضافة</p>
+                        </div>
                     )}
         
                     {/* Modal for delete confirmation */}
